@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navi_item_1"
+            android:checked="true"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="@string/menu_home"/>
+        <item
+            android:id="@+id/navi_item_2"
+            android:icon="@drawable/ic_edit_black_24dp"
+            android:title="@string/menu_memo"/>
+        <item
+            android:id="@+id/navi_item_3"
+            android:icon="@drawable/ic_event_available_black_24dp"
+            android:title="@string/menu_calendar"/>
+        <item
+            android:id="@+id/navi_item_4"
+            android:icon="@drawable/ic_format_list_numbered_black_24dp"
+            android:title="@string/menu_diary"/>
+        <item
+            android:id="@+id/navi_item_5"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/menu_setting"/>
+    </group>
+    <item
+        android:title="1.0.0">
+        <group
+            android:checkableBehavior="none">
+            <menu>
+                <item
+                    android:title=""/>
+            </menu>
+        </group>
+    </item>
+</menu>

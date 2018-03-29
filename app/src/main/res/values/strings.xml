@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Note</string>
+    <!-- 메뉴 -->
+    <string name="menu_home">홈</string>
+    <string name="menu_memo">메모</string>
+    <string name="menu_calendar">달력</string>
+    <string name="menu_diary">가계부</string>
+    <string name="menu_setting">설정</string>
+</resources>
