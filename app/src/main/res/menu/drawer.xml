@@ -24,7 +24,8 @@
             android:title="@string/menu_setting"/>
     </group>
     <item
-        android:title="1.0.0">
+        android:id="@+id/navi_item_6"
+        android:title="">
         <group
             android:checkableBehavior="none">
             <menu>

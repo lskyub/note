@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import kr.co.sbproject.note.R;
 import kr.co.sbproject.note.constant.Common;
 
-public class Fragment5Setting extends FlowFragment {
+public class Fragment5UserInfo extends FlowFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setInit(Common.Key.FRAGMENT_SETTING);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment5_setting, container, false);
+        return inflater.inflate(R.layout.fragment5_userinfo, container, false);
     }
 
     @Override

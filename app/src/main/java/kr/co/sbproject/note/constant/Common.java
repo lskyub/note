@@ -12,6 +12,7 @@ public class Common {
         public static final String FRAGMENT_MEMO = "FRAGMENT_MEMO";
         public static final String FRAGMENT_CALENDAR = "FRAGMENT_CALENDAR";
         public static final String FRAGMENT_DIARY = "FRAGMENT_DIARY";
+        public static final String FRAGMENT_USERINFO = "FRAGMENT_USERINFO";
         public static final String FRAGMENT_SETTING = "FRAGMENT_SETTING";
     }
 
@@ -20,6 +21,7 @@ public class Common {
         public static final String DATA_MAIN = "DATA_MAIN";
         public static final String DATA_CALENDAR = "DATA_CALENDAR";
         public static final String DATA_DIARY = "DATA_DIARY";
+        public static final String DATA_USERINFO = "DATA_USERINFO";
         public static final String DATA_SETTING = "DATA_SETTING";
     }
 }

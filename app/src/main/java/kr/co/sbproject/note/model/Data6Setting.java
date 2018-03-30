@@ -5,6 +5,6 @@
  */
 package kr.co.sbproject.note.model;
 
-public class Data5Setting extends EventModel {
+public class Data6Setting extends EventModel {
     public String data;
 }

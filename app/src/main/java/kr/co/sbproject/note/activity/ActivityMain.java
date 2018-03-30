@@ -1,5 +1,6 @@
 package kr.co.sbproject.note.activity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -7,11 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -23,7 +29,7 @@ import kr.co.sbproject.note.fragment.Fragment1Home;
 import kr.co.sbproject.note.fragment.Fragment2Memo;
 import kr.co.sbproject.note.fragment.Fragment3Calendar;
 import kr.co.sbproject.note.fragment.Fragment4Diary;
-import kr.co.sbproject.note.fragment.Fragment5Setting;
+import kr.co.sbproject.note.fragment.Fragment5UserInfo;
 import kr.co.sbproject.note.listener.OnBusListener;
 import kr.co.sbproject.note.model.Data1Home;
 import kr.co.sbproject.note.model.Data3Calendar;
@@ -34,18 +40,38 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
     private Bus mBus;
     private NavigationView nvView;
     private DrawerLayout drawerLayout;
-    private Toolbar tbMain;
+    private View btnTitle;
+    private TextView tvTitle1;
+    private TextView tvTitle2;
+    private TextView tvTitleSub;
+    private Toolbar toolBar;
 
     public void setInit() {
-        tbMain = (Toolbar) findViewById(R.id.tb_main);
-        setSupportActionBar(tbMain);
+        this.toolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        tbMain.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View actionBar = inflater.inflate(R.layout.view_toolbar, null);
+        getSupportActionBar().setCustomView(actionBar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+        btnTitle = actionBar.findViewById(R.id.btn_title);
+        btnTitle.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+        tvTitle1 = actionBar.findViewById(R.id.tv_title_1);
+        tvTitle2 = actionBar.findViewById(R.id.tv_title_2);
+        tvTitleSub = actionBar.findViewById(R.id.tv_title_sub);
+        Typeface typeface = Typeface.createFromAsset(this.getAssets(), "Lobster_1.3.otf");
+        tvTitle1.setTypeface(typeface);
+        tvTitle2.setTypeface(typeface);
+        tvTitleSub.setTypeface(typeface);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         nvView = (NavigationView) findViewById(R.id.nv_main);
         nvView.setNavigationItemSelectedListener(this);
+        MenuItem item = nvView.getMenu().findItem(R.id.navi_item_6);
+        try {
+            item.setTitle(getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
+        } catch (Exception e) {
+        }
 
         mRealm = Realm.getDefaultInstance();
         mBus = Bus.getInstance();
@@ -81,7 +107,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
                 fragment = new Fragment4Diary();
                 break;
             case R.id.navi_item_5:
-                fragment = new Fragment5Setting();
+                fragment = new Fragment5UserInfo();
                 break;
         }
 
@@ -100,17 +126,6 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         mBus.deregister();
         super.onDestroy();
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     @Override
     public boolean onEvent(String tag, Object o) {
