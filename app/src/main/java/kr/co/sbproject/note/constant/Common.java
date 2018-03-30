@@ -14,6 +14,10 @@ public class Common {
         public static final String FRAGMENT_DIARY = "FRAGMENT_DIARY";
         public static final String FRAGMENT_USERINFO = "FRAGMENT_USERINFO";
         public static final String FRAGMENT_SETTING = "FRAGMENT_SETTING";
+
+        public static String[] getKeys() {
+            return new String[]{MAIN, FRAGMENT_HOME, FRAGMENT_MEMO, FRAGMENT_CALENDAR, FRAGMENT_DIARY, FRAGMENT_USERINFO, FRAGMENT_SETTING};
+        }
     }
 
     public static class Cast {

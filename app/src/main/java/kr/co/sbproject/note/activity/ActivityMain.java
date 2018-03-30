@@ -75,7 +75,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
         mRealm = Realm.getDefaultInstance();
         mBus = Bus.getInstance();
-        mBus.register(new String[]{Common.Key.MAIN, Common.Key.FRAGMENT_HOME, Common.Key.FRAGMENT_MEMO, Common.Key.FRAGMENT_CALENDAR, Common.Key.FRAGMENT_DIARY, Common.Key.FRAGMENT_SETTING});
+        mBus.register(Common.Key.getKeys());
         mBus.subscribe(Common.Key.MAIN, this);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
